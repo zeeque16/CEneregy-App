@@ -38,19 +38,24 @@ def predict(arr,num=1):
 def print_prediction(pred):
     diff=energy_max-energy_min
 
-    print ("Random Forest: ",(pred[0]*diff)+energy_min)
-    print ("Extra Trees: ",(pred[1]*diff)+energy_min)
-    print ("Gradient Boosting: ",(pred[2]*diff)+energy_min)
-    print ("Ensemble: ",(pred[3]*diff)+energy_min)
+    # print "Random Forest: ",((pred[0]*diff)+energy_min)[0]
+    # print "Extra Trees: ",((pred[1]*diff)+energy_min)[0]
+    # print "Gradient Boosting: ",((pred[2]*diff)+energy_min)[0]
+    # print "Ensemble: ",((pred[3]*diff)+energy_min)[0]
+
+    print ((pred[0]*diff)+energy_min)[0],((pred[1]*diff)+energy_min)[0],((pred[2]*diff)+energy_min)[0],((pred[3]*diff)+energy_min)[0]
     sys.stdout.flush()
     
 
 def main():
     
-    print sys.argv[1]
-    sys.stdout.flush()
+    tdp=int(sys.argv[1])
+    size=int(sys.argv[2])
+    # print tdp,size
     # Test Record
     arr=[25,8,11,3,2,3,3,28]
+    arr[0]=tdp
+    arr[7]=size
     arr[7]=(arr[7]-mean_size)/std_size
 
     pred=predict(arr,1)
